@@ -1,0 +1,17 @@
+@namespace(uri="docURI", prefix="dm")
+package DocumentEpackage;
+
+class DmDocument : java.lang.Object {
+}
+
+
+class DmReport extends DmDocument : java.lang.Object {
+}
+
+class DmBlog extends DmDocument : java.lang.Object {
+}
+
+class DmPpt extends DmDocument : java.lang.Object {
+}
+
+
