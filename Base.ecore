@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="DocumentEpackage" nsURI="docURI" nsPrefix="dm">
-  <eClassifiers xsi:type="ecore:EClass" name="DmDocument" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DmDocument" instanceClassName="java.lang.Object"
+      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="DmReport" instanceClassName="java.lang.Object"
-      eSuperTypes="#//DmDocument"/>
+      abstract="true" interface="true" eSuperTypes="#//DmDocument"/>
   <eClassifiers xsi:type="ecore:EClass" name="DmBlog" instanceClassName="java.lang.Object"
-      eSuperTypes="#//DmDocument"/>
+      abstract="true" interface="true" eSuperTypes="#//DmDocument"/>
   <eClassifiers xsi:type="ecore:EClass" name="DmPpt" instanceClassName="java.lang.Object"
-      eSuperTypes="#//DmDocument"/>
+      abstract="true" interface="true" eSuperTypes="#//DmDocument"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DmSection" instanceClassName="java.lang.Object"
+      abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//DmParagraph"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSections" upperBound="-1"
+        eType="#//DmSection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DmParagraph" instanceClassName="java.lang.Object"
+      abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="images" upperBound="-1"
+        eType="#//DmImage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DmImage" instanceClassName="java.lang.Object"
+      abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paragraph" upperBound="-1"
+        eType="#//DmParagraph" eOpposite="#//DmParagraph/images"/>
+  </eClassifiers>
 </ecore:EPackage>

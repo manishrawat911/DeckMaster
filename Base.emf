@@ -1,17 +1,45 @@
 @namespace(uri="docURI", prefix="dm")
 package DocumentEpackage;
 
-class DmDocument : java.lang.Object {
+abstract interface DmDocument : java.lang.Object {
+	attr String title;
+	val DmSection[*] sections;
+}
+
+abstract interface DmSection : java.lang.Object {
+	attr String title;
+	val DmParagraph[*] body;
+	ref DmSection[*] subSections;
+}
+
+abstract interface DmParagraph : java.lang.Object {
+	attr String text;
+	ref DmImage[*]#uses images;
+}
+
+abstract interface DmImage : java.lang.Object {
+	attr String url;
+	attr String desc;
+	ref DmParagraph[*]#images paragraph;
+}
+
+abstract interface DmReport extends DmDocument : java.lang.Object {
+	// title
+	// introduction
+	// diagrams, tables
+	// results
+	// references	
+}
+
+abstract interface DmBlog extends DmDocument : java.lang.Object {
+}
+
+abstract interface DmPpt extends DmDocument : java.lang.Object {
 }
 
 
-class DmReport extends DmDocument : java.lang.Object {
-}
-
-class DmBlog extends DmDocument : java.lang.Object {
-}
-
-class DmPpt extends DmDocument : java.lang.Object {
+abstract interface DmSlide : java.lang.Object {
+	
 }
 
 
