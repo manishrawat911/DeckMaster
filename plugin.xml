@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DeckMaster -->
+      <package
+            uri="http://deckmaster.base"
+            class="DeckMaster.DeckMasterPackage"
+            genModel="model/DeckMaster.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DeckMaster -->
+      <package
+            uri="http://deckmaster.base"
+            class="DeckMaster.DeckMaster.DeckMasterPackage"
+            genModel="model/DeckMaster.genmodel"/>
+   </extension>
+
+</plugin>

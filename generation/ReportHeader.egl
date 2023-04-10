@@ -1,0 +1,10 @@
+<div class="report-meta">
+        <div class="name">
+            <h1>
+            [%= self.name%]
+            </h1>
+        </div>
+        <div class="author">
+            <h2>Report.author</h2>
+        </div>
+</div>

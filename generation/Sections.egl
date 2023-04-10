@@ -1,0 +1,15 @@
+[%
+	var sections = PlainDocument.allInstances.first().section;
+	var sectionTemplate: Template = TemplateFactory.load("Section.egl");
+	TemplateFactory.setOutputRoot("/tmp");
+	var interface : Template = 
+		TemplateFactory.prepare("[/%csection = section%/]");
+%]
+[% for (section in sections) {%] 
+	[%=section.name%]
+	[%
+		sectionTemplate.populate("section", section);
+	%]
+	[%=sectionTemplate.process()%]
+	
+[%}%]

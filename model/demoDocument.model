@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<p:PlainDocument xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:p="http://deckmaster.base" xmi:id="_YAx5sNatEe2aE4Cg1o2qBw" name="dSL Project Report" author="Manish Rawat">
+  <report xmi:id="_iUNRUNatEe2aE4Cg1o2qBw" name="Project Report" summary="Summary of the things done in this project" introduction="DeckMaster is a DSL for publishing domain which helps author to write and generate reports and other artifacts using the same file written using *.deckmaster file" conclusion="Conclusion is yet to be decided" sections="_eTiRMNatEe2aE4Cg1o2qBw _1o-GkNatEe2aE4Cg1o2qBw"/>
+  <section xmi:id="_eTiRMNatEe2aE4Cg1o2qBw" name="EMF Model" body="This section body will contains details about our Meta-Modelling process" partOf="_iUNRUNatEe2aE4Cg1o2qBw"/>
+  <section xmi:id="_1o-GkNatEe2aE4Cg1o2qBw" name="EVL for Model Validation" body="This section will contain the contraints to our model that could not be defined in our meta model" partOf="_iUNRUNatEe2aE4Cg1o2qBw"/>
+</p:PlainDocument>

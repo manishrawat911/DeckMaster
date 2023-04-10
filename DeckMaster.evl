@@ -1,0 +1,183 @@
+
+//context PlainDocumentModel!PlainDocument {
+  context PlainDocument {
+//	constraint CheckDataType{
+//		check: self.type.name = "Base" or self.type.name = "Report" or self.type.name = "Presentation" or self.type.name = "Blog"
+//		message: "Document should be atleast of one type, Base; Report; Presentation; Blog" 
+//	}
+	
+	constraint CheckNameIsNotEmpty{
+		check: self.name <> null and self.name.trim().size() > 0
+		message: "Document name cannot be empty. Please add a Name "
+	}
+	
+	constraint CheckDocNameValidity {
+		check: not self.name.isDocNameValid()
+		message: "Invalid characters found in document name: " + self.name
+	}
+	
+	constraint CheckAuthorNameNotEmpty {
+		check: self.author <> null and self.author.trim().size() > 0
+		message: "Author name must be provided "
+	}
+	
+	constraint CheckAuthorNameValidity {
+		check: self.author.isAuthorNameValid()
+		message: "Author name should be valid and can only contain alphabets"
+	}
+	
+	constraint TitleStartsWithUCOrDigit{
+//		check: self.name.startsWith("^[0-9].*") xor self.name.startsWith("^[a-z].*")
+		check: self.name.matches("^[0-9A-Z].*") 
+		message: "Document name should start with digit or Capital letters"
+	}
+}
+
+
+operation String isDocNameValid() : Boolean {
+  		return self.matches(".*[^a-zA-Z0-9\\s_-].*");
+}
+
+	operation String isAuthorNameValid() : Boolean {
+//  		return self.matches("[a-zA-Z]+");
+			return self.matches("^[a-zA-Z ]+$");
+
+}
+
+
+context PlainReport {
+	constraint SummaryIsNotEmpty {
+        check: self.summary <> null and self.summary.trim().size() > 0
+        message: "The Summary should not be empty."
+    }
+	
+	constraint IntroductionIsNotEmpty {
+       check: self.introduction <> null and self.introduction.trim().size() > 0
+        message: "The Introduction should not be empty."
+    }
+    
+    constraint ConclusionIsNotEmpty {
+        check: self.conclusion <> null and self.conclusion.trim().size() > 0
+        message: "The Conclusion should not be empty."
+    }
+	
+	constraint CheckSections {
+        check: self.sections->forAll(sec | sec.name <> null)
+        message: "All sections in Report must have a title"
+    }
+    
+    constraint AtLeastOneSection {
+        check: self.sections->size() != 0
+        message: "Report must have at least one section"
+    }
+    
+    constraint NoDuplicateSections {
+        check: self.sections.forAll(s1 | self.sections.excluding(s1).forAll(s2 | s1.name <> s2.name))
+        message: "Section titles must be unique"
+    }
+}
+
+
+
+context PlainSection {
+	constraint CheckTitle{
+		check: self.name <> null and self.name.trim().size() > 0
+		message: "Each section needs a title. Please add a title!" 
+	}
+	
+	constraint BodyIsNotEmpty{
+		check: self.body <> null and self.body.trim().size() > 0
+		message: "A section cannot be defined without a body. " 
+	}
+	
+	constraint UniqueSectionNamesInDocument {
+		check: not PlainSection.allInstances().exists(s | s != self and s.name = self.name)
+		message: "Section title already exists in the document. Please add a new name"
+	}
+}
+
+
+context PlainImages {
+	constraint CheckTitle{
+		check: self.imageTitle <> null and self.imageTitle.trim().size() > 0
+		message: "Each section needs a title. Please add a title!" 
+	}
+	
+	constraint CheckValidTitle {
+      check: self.imageTitle.isTitleValid()
+      message: "The title " + self.imageTitle + " contains invalid characters. Only alphanumeric characters, spaces, hyphens, and underscores are allowed."
+   }
+	
+	constraint CheckURILength {
+		check: self.uri <> null and self.uri.trim().size() > 0
+		message: "A section cannot be defined without a body. " 
+	}
+	
+	constraint CheckValidURI {
+		check: self.uri.isURIValid()
+		message: "URI " + self.uri + " is not valid " 
+	}
+}
+
+	operation String isURIValid() : Boolean {
+  		return self.matches("^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$");
+}
+
+	operation String isTitleValid() : Boolean {
+  		return self.matches("[\\w\\s\\-]+");
+}
+
+
+context PlainTable {
+    constraint atLeastOneColumnAndRow {
+        check: self.columns->notEmpty() and self.rows->notEmpty()
+        message: "A table must have at least one column and one row."
+    }
+    
+    constraint CheckCaption{
+		check: self.caption <> null and self.caption.trim().size() > 0
+		message: "Each Rable  must have a caption. Please add a caption!" 
+	}
+	
+	constraint rowsSameColumnSize {
+		guard: self.columns->size() > 0 and self.rows->size() > 0
+		check: self.rows.forAll(r | r.cells->size() = self.columns->size())
+		message: "All rows in the table must have the same number of columns as the number of columns in the table."
+	}
+	
+	constraint rowsNotEmpty {
+		guard: self.rows->size() > 0
+		check: self.rows.forAll(r | r.cells->notEmpty())
+		message: "All rows in the table must have at least one cell."
+	}
+	
+	constraint columnsNotEmpty {
+		guard: self.columns->size() > 0
+		check: self.columns.forAll(c | c.name <> null and c.name.size >0)
+		message: "All columns in the table must have at least one cell."
+	}
+	
+}
+
+
+context PlainColumn {
+	constraint CheckName{
+		check: self.name <> null and self.name.trim().size() > 0
+		message: "Each Column should have a name. Please add a name!" 
+	}
+}
+
+context PlainRow {
+	constraint atLeastOneCellPerRow {
+        guard: self.cells->size() > 0
+        check: self.cells->notEmpty()
+        message: "A row must have at least one cell."
+    }
+}
+
+context PlainCell {
+	constraint CheckValue{
+		check: self.value <> null and self.value.trim().size() > 0
+		message: "Each Cell needs a value. Please add a value!" 
+	}
+}

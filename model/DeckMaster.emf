@@ -1,0 +1,50 @@
+@namespace(uri="http://deckmaster.base", prefix="p")
+package DeckMaster;
+
+class PlainDocument {
+	attr String name;
+	attr String author;
+	val PlainReport report;
+	val PlainSection[*] section;
+}
+
+class PlainReport {
+	attr String name;
+	attr String summary;
+	attr String introduction;
+	attr String conclusion;
+	ref PlainSection[*]#partOf sections;
+}
+
+class PlainSection {
+	attr String name;
+	attr String body;
+	val PlainSection[*] subSection;
+	val PlainImages[*] images;
+	val PlainTable[*] tables;
+	ref PlainReport#sections partOf;
+}
+
+class PlainImages {
+	attr String uri;
+	attr String imageTitle;
+}
+
+class PlainTable {
+	attr String caption;
+	val PlainColumn[*] columns;
+	val PlainRow[*] rows;
+}
+
+class PlainColumn {
+	attr String name;
+}
+
+class PlainRow {
+	val PlainCell[*] cells;
+}
+
+class PlainCell {
+	attr String value;
+}
+

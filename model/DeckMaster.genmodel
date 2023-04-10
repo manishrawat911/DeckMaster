@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/DeckMaster/src" modelPluginID="DeckMaster" modelName="DeckMaster"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>DeckMaster.ecore</foreignModel>
+  <genPackages prefix="DeckMaster" disposableProviderFactory="true" ecorePackage="DeckMaster.ecore#/">
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainDocument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainDocument/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainDocument/author"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainDocument/report"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainDocument/section"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainReport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/summary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/introduction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/conclusion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainReport/sections"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainSection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainSection/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainSection/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/subSection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/images"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/tables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/partOf"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainImages">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainImages/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainImages/imageTitle"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainTable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainTable/caption"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainTable/columns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainTable/rows"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainColumn/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainRow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainRow/cells"/>
+    </genClasses>
+    <genClasses ecoreClass="DeckMaster.ecore#//PlainCell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainCell/value"/>
+    </genClasses>
+    <nestedGenPackages prefix="DeckMaster" disposableProviderFactory="true" ecorePackage="DeckMaster.ecore#/">
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainDocument">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainDocument/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainDocument/author"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainDocument/report"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainDocument/section"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainReport">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/summary"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/introduction"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainReport/conclusion"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainReport/sections"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainSection">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainSection/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainSection/body"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/subSection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/images"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/tables"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainSection/partOf"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainImages">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainImages/uri"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainImages/imageTitle"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainTable">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainTable/caption"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainTable/columns"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainTable/rows"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainColumn">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainColumn/name"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainRow">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeckMaster.ecore#//PlainRow/cells"/>
+      </genClasses>
+      <genClasses ecoreClass="DeckMaster.ecore#//PlainCell">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeckMaster.ecore#//PlainCell/value"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
