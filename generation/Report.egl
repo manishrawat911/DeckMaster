@@ -1,8 +1,8 @@
 [%
-// TemplateFactory.setTemplateRoot("/generation");
  var headerTemplate: Template = TemplateFactory.load("ReportHeader.egl");
  var sectionsTemplate: Template = TemplateFactory.load("Sections.egl");
  var self = PlainDocument.allInstances.first();
+ sectionsTemplate.populate("sections",self.section);
 %]
 
 <!DOCTYPE html>
@@ -14,15 +14,13 @@
 	    <title>[%=self.class%]</title>
 	    <title>[%=self.section.class%]</title>
 	    
-	</head>
-	
+	</head>	
 	<body>
 		<h1>
 			[%=self.name%]
 		</h1>
 	    <!-- Report name and author details -->
-		[%=headerTemplate.process()%]
-		
+		[%=headerTemplate.process()%]		
 		<!-- Sections -->
 		[%=sectionsTemplate.process()%]
 	</body>

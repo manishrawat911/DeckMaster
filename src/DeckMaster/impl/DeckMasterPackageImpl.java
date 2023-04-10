@@ -130,17 +130,11 @@ public class DeckMasterPackageImpl extends EPackageImpl implements DeckMasterPac
 
 		isInited = true;
 
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DeckMaster.DeckMaster.DeckMasterPackage.eNS_URI);
-		DeckMaster.DeckMaster.impl.DeckMasterPackageImpl theDeckMasterPackage_1 = (DeckMaster.DeckMaster.impl.DeckMasterPackageImpl)(registeredPackage instanceof DeckMaster.DeckMaster.impl.DeckMasterPackageImpl ? registeredPackage : DeckMaster.DeckMaster.DeckMasterPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theDeckMasterPackage.createPackageContents();
-		theDeckMasterPackage_1.createPackageContents();
 
 		// Initialize created meta-data
 		theDeckMasterPackage.initializePackageContents();
-		theDeckMasterPackage_1.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theDeckMasterPackage.freeze();
@@ -519,12 +513,6 @@ public class DeckMasterPackageImpl extends EPackageImpl implements DeckMasterPac
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
-
-		// Obtain other dependent packages
-		DeckMaster.DeckMaster.DeckMasterPackage theDeckMasterPackage_1 = (DeckMaster.DeckMaster.DeckMasterPackage)EPackage.Registry.INSTANCE.getEPackage(DeckMaster.DeckMaster.DeckMasterPackage.eNS_URI);
-
-		// Add subpackages
-		getESubpackages().add(theDeckMasterPackage_1);
 
 		// Create type parameters
 

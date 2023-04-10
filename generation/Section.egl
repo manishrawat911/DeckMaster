@@ -1,1 +1,24 @@
-[%=section.body%]
+[%
+  var tablesTemplate: Template = TemplateFactory.load("Tables.egl");
+  var imagesTemplate: Template = TemplateFactory.load("Images.egl");
+  var sectionsTemplate: Template = TemplateFactory.load("Sections.egl");
+  tablesTemplate.populate("tables", section.tables);
+  imagesTemplate.populate("images", section.images);
+  sectionsTemplate.populate("sections", section.subSection);
+%]
+ 
+<div class="report-section">
+    <div class="title">
+        <h3>[%=section.name%]</h3>
+    </div>
+    <div class="body">
+    	<p>[%=section.body%]</p>
+    </div>
+    [%=tablesTemplate.process()%]
+    [%=imagesTemplate.process()%]
+	[%if (not section.subSection.isEmpty()) {
+	sectionsTemplate.populate("sections", section.subSection);%]
+	[%=sectionsTemplate.process()%]
+		
+	[%}%] 
+</div>

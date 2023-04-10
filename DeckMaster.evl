@@ -12,7 +12,8 @@
 	}
 	
 	constraint CheckDocNameValidity {
-		check: not self.name.isDocNameValid()
+//		guard: self.name.isDefined()
+		check: self.name <> null and not self.name.isDocNameValid()
 		message: "Invalid characters found in document name: " + self.name
 	}
 	
@@ -28,7 +29,7 @@
 	
 	constraint TitleStartsWithUCOrDigit{
 //		check: self.name.startsWith("^[0-9].*") xor self.name.startsWith("^[a-z].*")
-		check: self.name.matches("^[0-9A-Z].*") 
+		check: self.name <> null and self.name.matches("^[0-9A-Z].*") 
 		message: "Document name should start with digit or Capital letters"
 	}
 }
@@ -38,10 +39,9 @@ operation String isDocNameValid() : Boolean {
   		return self.matches(".*[^a-zA-Z0-9\\s_-].*");
 }
 
-	operation String isAuthorNameValid() : Boolean {
+operation String isAuthorNameValid() : Boolean {
 //  		return self.matches("[a-zA-Z]+");
 			return self.matches("^[a-zA-Z ]+$");
-
 }
 
 
@@ -136,7 +136,7 @@ context PlainTable {
     
     constraint CheckCaption{
 		check: self.caption <> null and self.caption.trim().size() > 0
-		message: "Each Rable  must have a caption. Please add a caption!" 
+		message: "Each table  must have a caption. Please add a caption!" 
 	}
 	
 	constraint rowsSameColumnSize {

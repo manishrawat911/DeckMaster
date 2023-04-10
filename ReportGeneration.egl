@@ -1,0 +1,7 @@
+[%
+ 	TemplateFactory.setTemplateRoot("./generation");
+	var templateName : Template;
+	templateName := TemplateFactory.load('Report.egl');\
+	templateName.generate('report.html');
+%]
+

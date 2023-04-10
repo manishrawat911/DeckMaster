@@ -1,0 +1,12 @@
+[%
+//	var sections = PlainDocument.allInstances.first().section;
+	var tableTemplate: Template = TemplateFactory.load("Table.egl");
+%]
+[% for (table in tables) {%] 
+	[%
+		tableTemplate.populate("table", table);
+	%]
+	[%=tableTemplate.process()%]
+	[%=table.caption%]
+	
+[%}%]

@@ -100,7 +100,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_wQi0yddCEe2aE4Cg1o2qBw"/>
     </children>
     <element xmi:type="ecore:EClass" href="DeckMaster.ecore#//PlainColumn"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wQi0v9dCEe2aE4Cg1o2qBw" x="312" y="498"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wQi0v9dCEe2aE4Cg1o2qBw" x="300" y="498"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_wQi0ytdCEe2aE4Cg1o2qBw" type="2001" fontName="Segoe UI">
     <children xmi:type="notation:DecorationNode" xmi:id="_wQi0zNdCEe2aE4Cg1o2qBw" type="5001"/>

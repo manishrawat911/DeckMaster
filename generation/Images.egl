@@ -1,0 +1,13 @@
+[%
+	var imageTemplate: Template = TemplateFactory.load("Image.egl");
+%]
+<div class="section-images">
+[% for (image in images) {%] 
+	<div class="section-images-image">
+		[%imageTemplate.populate("section", section);%]
+		[%=imageTemplate.process()%]
+		[%=image.name%]	
+	</div>
+[%}%]
+
+</div>
